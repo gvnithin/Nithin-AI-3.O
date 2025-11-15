@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nithin AI - Multimodal AI Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with Auth -->
+        <header class="header">
+            <div class="logo">
+                <h1>🤖 Nithin AI</h1>
+                <p>Multimodal AI Assistant - Built-in APIs</p>
+            </div>
+            <div class="header-right">
+                <div class="user-info" id="user-info"></div>
+                <div class="header-auth">
+                    <button id="login-btn" class="auth-button">Login</button>
+                    <button id="signup-btn" class="auth-button">Sign Up</button>
+                    <button id="logout-btn" class="auth-button">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Usage Limits (shown when logged in) -->
+        <div class="usage-limits" id="usage-limits" style="display: none;">
+            <h4>📊 Daily Usage</h4>
+            <div class="usage-item">
+                <span>Text Requests:</span>
+                <div class="usage-bar">
+                    <div class="usage-progress" id="text-usage-bar" style="width: 0%"></div>
+                </div>
+                <div class="usage-text">
+                    <span id="text-usage-text">0/50 used</span>
+                    <span id="text-remaining">50 remaining</span>
+                </div>
+            </div>
+            <div class="usage-item">
+                <span>Image Generations:</span>
+                <div class="usage-bar">
+                    <div class="usage-progress" id="image-usage-bar" style="width: 0%"></div>
+                </div>
+                <div class="usage-text">
+                    <span id="image-usage-text">0/10 used</span>
+                    <span id="image-remaining">10 remaining</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="mode-selector">
+                    <div class="mode-group">
+                        <label>Input Type:</label>
+                        <select id="input-type">
+                            <option value="text">📝 Text Prompt</option>
+                            <option value="url">🔗 URL Analysis</option>
+                            <option value="image">🖼️ Image Upload</option>
+                            <option value="file">📁 File Upload</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mode-group">
+                        <label>Output Type:</label>
+                        <select id="output-type">
+                            <option value="text">📝 Text Response</option>
+                            <option value="code">💻 Code Generation</option>
+                            <option value="image">🎨 Image Generation</option>
+                            <option value="analysis">🔍 Analysis</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Dynamic Input Areas -->
+                <div id="text-input" class="input-area active">
+                    <textarea id="prompt-input" placeholder="Enter your prompt here... 
+Example: 'Create a React component for a weather app' or 'Explain quantum computing in simple terms'"></textarea>
+                </div>
+
+                <div id="url-input" class="input-area">
+                    <input type="url" id="url-input-field" placeholder="https://example.com/article">
+                </div>
+
+                <div id="file-input" class="input-area">
+                    <div class="file-upload-area">
+                        <input type="file" id="file-input-field" accept=".txt,.pdf,.jpg,.png,.jpeg">
+                        <label for="file-input-field" class="file-upload-label">
+                            📁 Choose File or Drag & Drop
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button id="generate-btn" class="generate-button">
+                        <span class="btn-text">Generate</span>
+                        <div class="loading-spinner" style="display: none;"></div>
+                    </button>
+                    <button id="clear-btn" class="clear-button">Clear</button>
+                </div>
+            </section>
+
+            <!-- Output Section -->
+            <section class="output-section">
+                <div class="output-header">
+                    <h3>Nithin AI Response</h3>
+                    <div class="output-actions">
+                        <button id="copy-btn" class="action-btn">📋 Copy</button>
+                        <button id="download-btn" class="action-btn">💾 Download</button>
+                    </div>
+                </div>
+                
+                <div id="output-content" class="output-content">
+                    <div class="welcome-message">
+                        <h4>🚀 Welcome to Nithin AI!</h4>
+                        <p>I can help you with:</p>
+                        <ul>
+                            <li>📝 Text generation and analysis</li>
+                            <li>💻 Code generation (React, Python, etc.)</li>
+                            <li>🎨 Image generation and analysis</li>
+                            <li>🔗 URL content analysis</li>
+                            <li>📁 File processing</li>
+                        </ul>
+                        <p>Select your input/output types and start creating!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h3>✨ Features</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h4>Multi-API Power</h4>
+                    <p>Uses Groq, Hugging Face, and Open Router for best results</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h4>Works Everywhere</h4>
+                    <p>Runs completely in your browser - no server needed</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Lightning Fast</h4>
+                    <p>Optimized for speed with Groq's inference engine</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h4>Privacy First</h4>
+                    <p>Your data stays in your browser</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Nithin AI - Powered by Groq, Hugging Face & Open Router</p>
+        </footer>
+    </div>
+
+    <!-- Auth Modal (will be inserted by JavaScript) -->
+    
+    <!-- Load JavaScript Files -->
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
