@@ -2,16 +2,13 @@
 const NITHIN_AI_CONFIG = {
     API_KEYS: {
         groq: [
-            "gsk_1234567890abcdef1234567890abcdef1234567890abcdef",
-            "gsk_abcdef1234567890abcdef1234567890abcdef1234567890"
+            "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"
         ],
         huggingFace: [
-            "hf_1234567890abcdef1234567890abcdef1234567890abcdef",
-            "hf_abcdef1234567890abcdef1234567890abcdef1234567890"
+            "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",
         ],
         openRouter: [
-            "sk-or-1234567890abcdef1234567890abcdef1234567890abcdef",
-            "sk-or-abcdef1234567890abcdef1234567890abcdef1234567890"
+            "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"
         ]
     },
     GOOGLE_SHEETS: {
